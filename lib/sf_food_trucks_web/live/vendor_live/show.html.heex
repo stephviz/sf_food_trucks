@@ -1,0 +1,52 @@
+<.header>
+  Vendor <%= @vendor.id %>
+  <:subtitle>This is a vendor record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/vendors/#{@vendor}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit vendor</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Location"><%= @vendor.location_id %></:item>
+  <:item title="Name"><%= @vendor.name %></:item>
+  <:item title="Type"><%= @vendor.type %></:item>
+  <:item title="Cnn"><%= @vendor.cnn %></:item>
+  <:item title="Location desc"><%= @vendor.location_desc %></:item>
+  <:item title="Address"><%= @vendor.address %></:item>
+  <:item title="Block lot"><%= @vendor.block_lot %></:item>
+  <:item title="Block"><%= @vendor.block %></:item>
+  <:item title="Lot"><%= @vendor.lot %></:item>
+  <:item title="Permit"><%= @vendor.permit %></:item>
+  <:item title="Status"><%= @vendor.status %></:item>
+  <:item title="Food items"><%= @vendor.food_items %></:item>
+  <:item title="X coordinate"><%= @vendor.x_coordinate %></:item>
+  <:item title="Y coordinate"><%= @vendor.y_coordinate %></:item>
+  <:item title="Latitude"><%= @vendor.latitude %></:item>
+  <:item title="Schedule"><%= @vendor.schedule %></:item>
+  <:item title="Days hours"><%= @vendor.days_hours %></:item>
+  <:item title="Approved"><%= @vendor.approved %></:item>
+  <:item title="Received"><%= @vendor.received %></:item>
+  <:item title="Expiration date"><%= @vendor.expiration_date %></:item>
+  <:item title="Location"><%= @vendor.location %></:item>
+  <:item title="Zip"><%= @vendor.zip %></:item>
+</.list>
+
+<.back navigate={~p"/vendors"}>Back to vendors</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="vendor-modal"
+  show
+  on_cancel={JS.patch(~p"/vendors/#{@vendor}")}
+>
+  <.live_component
+    module={SfFoodTrucksWeb.VendorLive.FormComponent}
+    id={@vendor.id}
+    title={@page_title}
+    action={@live_action}
+    vendor={@vendor}
+    patch={~p"/vendors/#{@vendor}"}
+  />
+</.modal>
