@@ -1,12 +1,12 @@
-defmodule SfFoodTrucks.VendorsTest do
-  use SfFoodTrucks.DataCase
+defmodule SFFoodTrucks.VendorsTest do
+  use SFFoodTrucks.DataCase
 
-  alias SfFoodTrucks.Vendors
+  alias SFFoodTrucks.Vendors
 
   describe "vendors" do
-    alias SfFoodTrucks.Vendors.Vendor
+    alias SFFoodTrucks.Vendors.Vendor
 
-    import SfFoodTrucks.VendorsFixtures
+    import SFFoodTrucks.VendorsFixtures
 
     @invalid_attrs %{
       block: nil,

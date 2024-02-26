@@ -1,7 +1,7 @@
-defmodule SfFoodTrucksWeb.VendorLive.Show do
-  use SfFoodTrucksWeb, :live_view
+defmodule SFFoodTrucksWeb.VendorLive.Show do
+  use SFFoodTrucksWeb, :live_view
 
-  alias SfFoodTrucks.Vendors
+  alias SFFoodTrucks.Vendors
 
   @impl true
   def mount(_params, _session, socket) do

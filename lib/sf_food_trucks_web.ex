@@ -1,12 +1,12 @@
-defmodule SfFoodTrucksWeb do
+defmodule SFFoodTrucksWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use SfFoodTrucksWeb, :controller
-      use SfFoodTrucksWeb, :html
+      use SFFoodTrucksWeb, :controller
+      use SFFoodTrucksWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,10 +40,10 @@ defmodule SfFoodTrucksWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: SfFoodTrucksWeb.Layouts]
+        layouts: [html: SFFoodTrucksWeb.Layouts]
 
       import Plug.Conn
-      import SfFoodTrucksWeb.Gettext
+      import SFFoodTrucksWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -52,7 +52,7 @@ defmodule SfFoodTrucksWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {SfFoodTrucksWeb.Layouts, :app}
+        layout: {SFFoodTrucksWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -84,8 +84,8 @@ defmodule SfFoodTrucksWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import SfFoodTrucksWeb.CoreComponents
-      import SfFoodTrucksWeb.Gettext
+      import SFFoodTrucksWeb.CoreComponents
+      import SFFoodTrucksWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -98,9 +98,9 @@ defmodule SfFoodTrucksWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: SfFoodTrucksWeb.Endpoint,
-        router: SfFoodTrucksWeb.Router,
-        statics: SfFoodTrucksWeb.static_paths()
+        endpoint: SFFoodTrucksWeb.Endpoint,
+        router: SFFoodTrucksWeb.Router,
+        statics: SFFoodTrucksWeb.static_paths()
     end
   end
 

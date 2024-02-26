@@ -1,4 +1,4 @@
-defmodule SfFoodTrucks.MixProject do
+defmodule SFFoodTrucks.MixProject do
   use Mix.Project
 
   def project do
@@ -18,7 +18,7 @@ defmodule SfFoodTrucks.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {SfFoodTrucks.Application, []},
+      mod: {SFFoodTrucks.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

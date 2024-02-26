@@ -68,6 +68,6 @@ NimbleCSV.define(VendorParser, separator: ",", escape: "\"")
     location: location,
     zip: zip_codes
   }
-  |> SfFoodTrucks.Vendors.create()
+  |> SFFoodTrucks.Vendors.create()
 end)
 |> Stream.run()

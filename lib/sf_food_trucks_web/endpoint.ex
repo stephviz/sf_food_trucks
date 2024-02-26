@@ -1,4 +1,4 @@
-defmodule SfFoodTrucksWeb.Endpoint do
+defmodule SFFoodTrucksWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :sf_food_trucks
 
   # The session will be stored in the cookie and signed,
@@ -23,7 +23,7 @@ defmodule SfFoodTrucksWeb.Endpoint do
     at: "/",
     from: :sf_food_trucks,
     gzip: false,
-    only: SfFoodTrucksWeb.static_paths()
+    only: SFFoodTrucksWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -49,5 +49,5 @@ defmodule SfFoodTrucksWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug SfFoodTrucksWeb.Router
+  plug SFFoodTrucksWeb.Router
 end

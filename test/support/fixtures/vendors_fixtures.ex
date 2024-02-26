@@ -1,7 +1,7 @@
-defmodule SfFoodTrucks.VendorsFixtures do
+defmodule SFFoodTrucks.VendorsFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `SfFoodTrucks.Vendors` context.
+  entities via the `SFFoodTrucks.Vendors` context.
   """
 
   @doc """
@@ -34,7 +34,7 @@ defmodule SfFoodTrucks.VendorsFixtures do
         y_coordinate: 120.5,
         zip: 42
       })
-      |> SfFoodTrucks.Vendors.create()
+      |> SFFoodTrucks.Vendors.create()
 
     vendor
   end

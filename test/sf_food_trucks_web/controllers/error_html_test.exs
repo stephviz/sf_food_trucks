@@ -1,15 +1,15 @@
-defmodule SfFoodTrucksWeb.ErrorHTMLTest do
-  use SfFoodTrucksWeb.ConnCase, async: true
+defmodule SFFoodTrucksWeb.ErrorHTMLTest do
+  use SFFoodTrucksWeb.ConnCase, async: true
 
   # Bring render_to_string/4 for testing custom views
   import Phoenix.Template
 
   test "renders 404.html" do
-    assert render_to_string(SfFoodTrucksWeb.ErrorHTML, "404", "html", []) == "Not Found"
+    assert render_to_string(SFFoodTrucksWeb.ErrorHTML, "404", "html", []) == "Not Found"
   end
 
   test "renders 500.html" do
-    assert render_to_string(SfFoodTrucksWeb.ErrorHTML, "500", "html", []) ==
+    assert render_to_string(SFFoodTrucksWeb.ErrorHTML, "500", "html", []) ==
              "Internal Server Error"
   end
 end

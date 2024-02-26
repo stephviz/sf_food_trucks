@@ -1,4 +1,4 @@
-defmodule SfFoodTrucksWeb.ErrorJSON do
+defmodule SFFoodTrucksWeb.ErrorJSON do
   # If you want to customize a particular status code,
   # you may add your own clauses, such as:
   #

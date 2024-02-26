@@ -1,5 +1,5 @@
-defmodule SfFoodTrucksWeb.ErrorHTML do
-  use SfFoodTrucksWeb, :html
+defmodule SFFoodTrucksWeb.ErrorHTML do
+  use SFFoodTrucksWeb, :html
 
   # If you want to customize your error pages,
   # uncomment the embed_templates/1 call below

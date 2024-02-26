@@ -1,8 +1,8 @@
-defmodule SfFoodTrucksWeb.VendorLiveTest do
-  use SfFoodTrucksWeb.ConnCase
+defmodule SFFoodTrucksWeb.VendorLiveTest do
+  use SFFoodTrucksWeb.ConnCase
 
   import Phoenix.LiveViewTest
-  import SfFoodTrucks.VendorsFixtures
+  import SFFoodTrucks.VendorsFixtures
 
   @create_attrs %{
     block: 42,
