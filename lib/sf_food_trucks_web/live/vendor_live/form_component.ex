@@ -1,7 +1,7 @@
-defmodule SfFoodTrucksWeb.VendorLive.FormComponent do
-  use SfFoodTrucksWeb, :live_component
+defmodule SFFoodTrucksWeb.VendorLive.FormComponent do
+  use SFFoodTrucksWeb, :live_component
 
-  alias SfFoodTrucks.Vendors
+  alias SFFoodTrucks.Vendors
 
   @impl true
   def render(assigns) do

@@ -1,4 +1,4 @@
-defmodule SfFoodTrucksWeb.CoreComponents do
+defmodule SFFoodTrucksWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -17,7 +17,7 @@ defmodule SfFoodTrucksWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import SfFoodTrucksWeb.Gettext
+  import SFFoodTrucksWeb.Gettext
 
   @doc """
   Renders a modal.
@@ -660,9 +660,9 @@ defmodule SfFoodTrucksWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(SfFoodTrucksWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(SFFoodTrucksWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(SfFoodTrucksWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(SFFoodTrucksWeb.Gettext, "errors", msg, opts)
     end
   end
 

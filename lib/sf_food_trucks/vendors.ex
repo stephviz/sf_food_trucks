@@ -1,12 +1,12 @@
-defmodule SfFoodTrucks.Vendors do
+defmodule SFFoodTrucks.Vendors do
   @moduledoc """
   The Vendors context.
   """
 
   import Ecto.Query, warn: false
-  alias SfFoodTrucks.Repo
+  alias SFFoodTrucks.Repo
 
-  alias SfFoodTrucks.Vendors.Vendor
+  alias SFFoodTrucks.Vendors.Vendor
 
   @doc """
   Returns the list of vendors.

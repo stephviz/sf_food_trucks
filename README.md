@@ -1,4 +1,4 @@
-# SfFoodTrucks
+# SFFoodTrucks
 
 To start your Phoenix server:
 

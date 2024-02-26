@@ -1,4 +1,4 @@
-defmodule SfFoodTrucks.Application do
+defmodule SFFoodTrucks.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,21 +8,21 @@ defmodule SfFoodTrucks.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      SfFoodTrucksWeb.Telemetry,
-      SfFoodTrucks.Repo,
+      SFFoodTrucksWeb.Telemetry,
+      SFFoodTrucks.Repo,
       {DNSCluster, query: Application.get_env(:sf_food_trucks, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: SfFoodTrucks.PubSub},
+      {Phoenix.PubSub, name: SFFoodTrucks.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: SfFoodTrucks.Finch},
-      # Start a worker by calling: SfFoodTrucks.Worker.start_link(arg)
-      # {SfFoodTrucks.Worker, arg},
+      {Finch, name: SFFoodTrucks.Finch},
+      # Start a worker by calling: SFFoodTrucks.Worker.start_link(arg)
+      # {SFFoodTrucks.Worker, arg},
       # Start to serve requests, typically the last entry
-      SfFoodTrucksWeb.Endpoint
+      SFFoodTrucksWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: SfFoodTrucks.Supervisor]
+    opts = [strategy: :one_for_one, name: SFFoodTrucks.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -30,7 +30,7 @@ defmodule SfFoodTrucks.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    SfFoodTrucksWeb.Endpoint.config_change(changed, removed)
+    SFFoodTrucksWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

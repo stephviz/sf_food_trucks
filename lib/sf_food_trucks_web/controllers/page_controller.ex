@@ -1,5 +1,5 @@
-defmodule SfFoodTrucksWeb.PageController do
-  use SfFoodTrucksWeb, :controller
+defmodule SFFoodTrucksWeb.PageController do
+  use SFFoodTrucksWeb, :controller
 
   def home(conn, _params) do
     # The home page is often custom made,

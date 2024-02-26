@@ -1,4 +1,4 @@
-defmodule SfFoodTrucksWeb.Telemetry do
+defmodule SFFoodTrucksWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -86,7 +86,7 @@ defmodule SfFoodTrucksWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {SfFoodTrucksWeb, :count_users, []}
+      # {SFFoodTrucksWeb, :count_users, []}
     ]
   end
 end

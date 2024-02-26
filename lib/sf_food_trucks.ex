@@ -1,6 +1,6 @@
-defmodule SfFoodTrucks do
+defmodule SFFoodTrucks do
   @moduledoc """
-  SfFoodTrucks keeps the contexts that define your domain
+  SFFoodTrucks keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

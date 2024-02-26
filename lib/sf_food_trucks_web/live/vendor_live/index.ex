@@ -1,8 +1,8 @@
-defmodule SfFoodTrucksWeb.VendorLive.Index do
-  use SfFoodTrucksWeb, :live_view
+defmodule SFFoodTrucksWeb.VendorLive.Index do
+  use SFFoodTrucksWeb, :live_view
 
-  alias SfFoodTrucks.Vendors
-  alias SfFoodTrucks.Vendors.Vendor
+  alias SFFoodTrucks.Vendors
+  alias SFFoodTrucks.Vendors.Vendor
 
   @impl true
   def mount(_params, _session, socket) do
@@ -33,7 +33,7 @@ defmodule SfFoodTrucksWeb.VendorLive.Index do
   end
 
   @impl true
-  def handle_info({SfFoodTrucksWeb.VendorLive.FormComponent, {:saved, vendor}}, socket) do
+  def handle_info({SFFoodTrucksWeb.VendorLive.FormComponent, {:saved, vendor}}, socket) do
     {:noreply, stream_insert(socket, :vendors, vendor)}
   end
 

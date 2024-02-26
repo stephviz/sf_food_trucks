@@ -8,18 +8,18 @@
 import Config
 
 config :sf_food_trucks,
-  ecto_repos: [SfFoodTrucks.Repo],
+  ecto_repos: [SFFoodTrucks.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :sf_food_trucks, SfFoodTrucksWeb.Endpoint,
+config :sf_food_trucks, SFFoodTrucksWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: SfFoodTrucksWeb.ErrorHTML, json: SfFoodTrucksWeb.ErrorJSON],
+    formats: [html: SFFoodTrucksWeb.ErrorHTML, json: SFFoodTrucksWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: SfFoodTrucks.PubSub,
+  pubsub_server: SFFoodTrucks.PubSub,
   live_view: [signing_salt: "ETFhNTq1"]
 
 # Configures the mailer
@@ -29,7 +29,7 @@ config :sf_food_trucks, SfFoodTrucksWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :sf_food_trucks, SfFoodTrucks.Mailer, adapter: Swoosh.Adapters.Local
+config :sf_food_trucks, SFFoodTrucks.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

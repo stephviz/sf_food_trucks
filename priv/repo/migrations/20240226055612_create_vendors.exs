@@ -1,4 +1,4 @@
-defmodule SfFoodTrucks.Repo.Migrations.CreateVendors do
+defmodule SFFoodTrucks.Repo.Migrations.CreateVendors do
   use Ecto.Migration
 
   def change do

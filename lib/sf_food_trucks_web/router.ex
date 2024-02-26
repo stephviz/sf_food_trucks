@@ -1,11 +1,11 @@
-defmodule SfFoodTrucksWeb.Router do
-  use SfFoodTrucksWeb, :router
+defmodule SFFoodTrucksWeb.Router do
+  use SFFoodTrucksWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {SfFoodTrucksWeb.Layouts, :root}
+    plug :put_root_layout, html: {SFFoodTrucksWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,7 +14,7 @@ defmodule SfFoodTrucksWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", SfFoodTrucksWeb do
+  scope "/", SFFoodTrucksWeb do
     pipe_through :browser
 
     get "/", PageController, :home
@@ -28,7 +28,7 @@ defmodule SfFoodTrucksWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SfFoodTrucksWeb do
+  # scope "/api", SFFoodTrucksWeb do
   #   pipe_through :api
   # end
 
@@ -44,7 +44,7 @@ defmodule SfFoodTrucksWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: SfFoodTrucksWeb.Telemetry
+      live_dashboard "/dashboard", metrics: SFFoodTrucksWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
