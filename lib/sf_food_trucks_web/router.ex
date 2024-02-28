@@ -27,10 +27,11 @@ defmodule SFFoodTrucksWeb.Router do
     live "/vendors/:id/show/edit", VendorLive.Show, :edit
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SFFoodTrucksWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", SFFoodTrucksWeb do
+    pipe_through :api
+
+    resources "/vendors", VendorController, except: [:new, :edit]
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:sf_food_trucks, :dev_routes) do

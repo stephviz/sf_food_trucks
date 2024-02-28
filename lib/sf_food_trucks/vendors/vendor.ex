@@ -2,6 +2,35 @@ defmodule SFFoodTrucks.Vendors.Vendor do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @fields [
+    :id,
+    :location_id,
+    :name,
+    :type,
+    :cnn,
+    :location_desc,
+    :address,
+    :block_lot,
+    :block,
+    :lot,
+    :permit,
+    :status,
+    :food_items,
+    :x_coordinate,
+    :y_coordinate,
+    :latitude,
+    :longitude,
+    :schedule,
+    :days_hours,
+    :approved,
+    :received,
+    :expiration_date,
+    :location,
+    :zip
+  ]
+
+  @derive {Jason.Encoder, only: @fields}
+
   schema "vendors" do
     field :block, :string
     field :name, :string
@@ -34,30 +63,6 @@ defmodule SFFoodTrucks.Vendors.Vendor do
   def changeset(vendor, attrs) do
     vendor
     |> cast(attrs, [
-      :location_id,
-      :name,
-      :type,
-      :cnn,
-      :location_desc,
-      :address,
-      :block_lot,
-      :block,
-      :lot,
-      :permit,
-      :status,
-      :food_items,
-      :x_coordinate,
-      :y_coordinate,
-      :latitude,
-      :schedule,
-      :days_hours,
-      :approved,
-      :received,
-      :expiration_date,
-      :location,
-      :zip
-    ])
-    |> validate_required([
       :location_id,
       :name,
       :type,
