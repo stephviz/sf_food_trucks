@@ -17,7 +17,8 @@ defmodule SFFoodTrucks.Application do
       # Start a worker by calling: SFFoodTrucks.Worker.start_link(arg)
       # {SFFoodTrucks.Worker, arg},
       # Start to serve requests, typically the last entry
-      SFFoodTrucksWeb.Endpoint
+      SFFoodTrucksWeb.Endpoint,
+      {DynamicSupervisor, name: SFFoodTrucks.Fixture.BatchProcessorSupervisor}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

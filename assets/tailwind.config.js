@@ -9,12 +9,15 @@ module.exports = {
   content: [
     "./js/**/*.js",
     "../lib/sf_food_trucks_web.ex",
-    "../lib/sf_food_trucks_web/**/*.*ex"
+    "../lib/sf_food_trucks_web/**/*.*ex",
+    "../lib/sf_food_trucks_web/**/*.sface",
+    "../lib/sf_food_trucks_web/live/importer_live.ex",
+    "../priv/catalogue/**/*.{ex,sface}"
   ],
   theme: {
     extend: {
       colors: {
-        brand: "#FD4F00",
+        brand: "#9F00FF"
       }
     },
   },

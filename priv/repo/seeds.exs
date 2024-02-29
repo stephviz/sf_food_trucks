@@ -6,7 +6,9 @@ NimbleCSV.define(VendorParser, separator: ",", escape: "\"")
 
 "priv/repo/seed_files/vendors_seed.csv"
 |> File.stream!()
+|> IO.inspect(label: "RIGHT HERE - file.stream")
 |> VendorParser.parse_stream()
+|> IO.inspect(label: "RIGHT HERE - parse stream")
 |> Stream.each(fn [
                     location_id,
                     applicant,

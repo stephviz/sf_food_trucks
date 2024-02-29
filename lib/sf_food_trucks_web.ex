@@ -58,6 +58,16 @@ defmodule SFFoodTrucksWeb do
     end
   end
 
+  def surface_live_view do
+    quote do
+      @moduledoc false
+      use Surface.LiveView,
+        layout: {SFFoodTrucksWeb.Layouts, :app}
+
+      unquote(html_helpers())
+    end
+  end
+
   def live_component do
     quote do
       use Phoenix.LiveComponent

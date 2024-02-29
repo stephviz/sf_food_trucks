@@ -17,7 +17,7 @@ defmodule SFFoodTrucksWeb.Router do
   scope "/", SFFoodTrucksWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", ImporterLive
 
     live "/vendors", VendorLive.Index, :index
     live "/vendors/new", VendorLive.Index, :new
