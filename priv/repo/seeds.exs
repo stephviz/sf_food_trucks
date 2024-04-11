@@ -41,7 +41,7 @@ NimbleCSV.define(VendorParser, separator: ",", escape: "\"")
   food_items =
     items_offered
     |> String.split(":", trim: true)
-    |> Enum.map(&String.trim(&1))
+    |> Enum.map(&String.trim/1)
 
   %{
     location_id: location_id,

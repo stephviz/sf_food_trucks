@@ -12,27 +12,26 @@ defmodule SFFoodTrucks.VendorsFixtures do
       attrs
       |> Enum.into(%{
         address: "some address",
-        approved: ~U[2024-02-25 05:56:00Z],
-        block: 42,
-        block_lot: 42,
+        block: "42",
+        block_lot: "42",
         cnn: 42,
         days_hours: "some days_hours",
-        expiration_date: ~U[2024-02-25 05:56:00Z],
-        food_items: "some food_items",
+        expiration_date: "03/15/2016 12:00:00 AM",
+        food_items: ["some", "food_items"],
         latitude: 120.5,
         location: "some location",
         location_desc: "some location_desc",
         location_id: 42,
-        lot: 42,
+        lot: "42",
         name: "some name",
         permit: "some permit",
-        received: ~U[2024-02-25 05:56:00Z],
+        received: "20151231",
         schedule: "some schedule",
-        status: "some status",
-        type: "some type",
+        status: :ISSUED,
+        type: "Truck",
         x_coordinate: 120.5,
         y_coordinate: 120.5,
-        zip: 42
+        zip: 42119
       })
       |> SFFoodTrucks.Vendors.create()
 

@@ -12,6 +12,17 @@ defmodule SFFoodTrucksWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_cookies
+  end
+
+  scope "/api", SFFoodTrucksWeb, as: :api do
+    pipe_through :api
+
+    get "/vendors", VendorController, :index
+    get "/vendors/:id", VendorController, :show
+    post "/vendors", VendorController, :create
+    put "/vendors/update", VendorController, :update
+    delete "/vendors/:id", VendorController, :delete
   end
 
   scope "/", SFFoodTrucksWeb do
