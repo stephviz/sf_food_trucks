@@ -34,6 +34,7 @@ defmodule SFFoodTrucksWeb.VendorLive.FormComponent do
         <.input field={@form[:x_coordinate]} type="number" label="X coordinate" step="any" />
         <.input field={@form[:y_coordinate]} type="number" label="Y coordinate" step="any" />
         <.input field={@form[:latitude]} type="number" label="Latitude" step="any" />
+        <.input field={@form[:longitude]} type="number" label="Longitude" step="any" />
         <.input field={@form[:schedule]} type="text" label="Schedule" />
         <.input field={@form[:days_hours]} type="text" label="Days hours" />
         <.input field={@form[:approved]} type="datetime-local" label="Approved" />
@@ -74,6 +75,13 @@ defmodule SFFoodTrucksWeb.VendorLive.FormComponent do
   end
 
   defp save_vendor(socket, :edit, vendor_params) do
+    food_items =
+      vendor_params["food_items"]
+      |> String.split(":", trim: true)
+      |> Enum.map(&String.trim/1)
+
+    vendor_params = Map.put(vendor_params, "food_items", food_items)
+
     case Vendors.update(socket.assigns.vendor, vendor_params) do
       {:ok, vendor} ->
         notify_parent({:saved, vendor})
@@ -89,6 +97,13 @@ defmodule SFFoodTrucksWeb.VendorLive.FormComponent do
   end
 
   defp save_vendor(socket, :new, vendor_params) do
+    food_items =
+      vendor_params["food_items"]
+      |> String.split(":", trim: true)
+      |> Enum.map(&String.trim/1)
+
+    vendor_params = Map.put(vendor_params, "food_items", food_items)
+
     case Vendors.create(vendor_params) do
       {:ok, vendor} ->
         notify_parent({:saved, vendor})

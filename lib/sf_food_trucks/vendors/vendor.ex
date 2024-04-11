@@ -34,7 +34,7 @@ defmodule SFFoodTrucks.Vendors.Vendor do
   schema "vendors" do
     field :block, :string
     field :name, :string
-    field :status, :string
+    field :status, Ecto.Enum, values: [:REQUESTED, :EXPIRED, :APPROVED, :SUSPEND, :ISSUED]
     field :type, :string
     field :zip, :integer
     field :address, :string
@@ -78,6 +78,7 @@ defmodule SFFoodTrucks.Vendors.Vendor do
       :x_coordinate,
       :y_coordinate,
       :latitude,
+      :longitude,
       :schedule,
       :days_hours,
       :approved,

@@ -22,6 +22,26 @@ defmodule SFFoodTrucks.Vendors do
   end
 
   @doc """
+  Returns a single vendor.
+
+  ## Examples
+
+      iex> get(123)
+      {:ok, %Vendor{}}
+
+      iex> get(0)
+      {:error, :not_found}
+
+  """
+  def get(id) do
+    Repo.get(Vendor, id)
+    |> case do
+      nil -> {:error, :not_found}
+      v -> {:ok, v}
+    end
+  end
+
+  @doc """
   Gets a single vendor.
 
   Raises `Ecto.NoResultsError` if the Vendor does not exist.
@@ -68,9 +88,13 @@ defmodule SFFoodTrucks.Vendors do
 
   """
   def update(%Vendor{} = vendor, attrs) do
-    vendor
-    |> Vendor.changeset(attrs)
-    |> Repo.update()
+    changeset = Vendor.changeset(vendor, attrs)
+
+    if changeset.valid? and changeset.changes == %{} do
+      {:error, :no_valid_changes}
+    else
+      Repo.update(changeset)
+    end
   end
 
   @doc """

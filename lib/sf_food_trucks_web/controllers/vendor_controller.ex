@@ -26,9 +26,8 @@ defmodule SFFoodTrucksWeb.VendorController do
   end
 
   def update(conn, %{"id" => id, "params" => vendor_params}) do
-    vendor = Vendors.get!(id)
-
-    with {:ok, %Vendor{} = vendor} <- Vendors.update(vendor, vendor_params) do
+    with {:ok, vendor} <- Vendors.get(id),
+         {:ok, %Vendor{} = vendor} <- Vendors.update(vendor, vendor_params) do
       conn
       |> put_status(200)
       |> json(%{data: vendor})

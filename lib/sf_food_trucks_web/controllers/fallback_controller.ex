@@ -13,6 +13,20 @@ defmodule SFFoodTrucksWeb.FallbackController do
     |> render(:"404")
   end
 
+  def call(conn, {:error, :no_valid_changes}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(html: SFFoodTrucksWeb.ErrorHTML, json: SFFoodTrucksWeb.ErrorJSON)
+    |> render(:"422")
+  end
+
+  def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(json: SFFoodTrucksWeb.ChangesetJSON)
+    |> render(:error, changeset: changeset)
+  end
+
   def call(conn, {:error, _}) do
     conn
     |> put_status(:internal_server_error)
