@@ -87,5 +87,8 @@ defmodule SFFoodTrucks.Vendors.Vendor do
       :location,
       :zip
     ])
+    |> validate_required(:name)
+    |> validate_required(:type)
+    |> validate_inclusion(:type, ["Truck", "Push Cart", "Unknown"])
   end
 end
