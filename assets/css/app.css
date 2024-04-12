@@ -3,3 +3,31 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+@layer base {
+  html {
+    @apply text-slate-700
+  }
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.map {
+  /* width: 400px;
+  height: 400px; */
+  @apply sm:w-[350px] sm:h-[350px] xl:w-[450px] xl:h-[450px] 2xl:w-[650px] 2xl:h-[650px] 
+}
