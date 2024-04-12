@@ -55,7 +55,7 @@ defmodule SFFoodTrucks.VendorsTest do
         location: "(111, -222)",
         approved: "03/16/2019 12:00:00 AM",
         location_id: 42,
-        cnn: 424242,
+        cnn: 424_242,
         location_desc: "some location_desc",
         block_lot: "42",
         lot: "42",
@@ -81,7 +81,7 @@ defmodule SFFoodTrucks.VendorsTest do
       assert vendor.location == "(111, -222)"
       assert vendor.approved == "03/16/2019 12:00:00 AM"
       assert vendor.location_id == 42
-      assert vendor.cnn == 424242
+      assert vendor.cnn == 424_242
       assert vendor.location_desc == "some location_desc"
       assert vendor.block_lot == "42"
       assert vendor.lot == "42"
@@ -108,13 +108,13 @@ defmodule SFFoodTrucks.VendorsTest do
         name: "some updated name",
         status: :APPROVED,
         type: "Unknown",
-        zip: 434343,
+        zip: 434_343,
         address: "some updated address",
         permit: "some updated permit",
         location: "some updated location",
         approved: "09/16/2017 12:00:00 AM",
         location_id: 43,
-        cnn: 44433333,
+        cnn: 44_433_333,
         location_desc: "some updated location_desc",
         block_lot: "43",
         lot: "43",
@@ -134,13 +134,13 @@ defmodule SFFoodTrucks.VendorsTest do
       assert vendor.name == "some updated name"
       assert vendor.status == :APPROVED
       assert vendor.type == "Unknown"
-      assert vendor.zip == 434343
+      assert vendor.zip == 434_343
       assert vendor.address == "some updated address"
       assert vendor.permit == "some updated permit"
       assert vendor.location == "some updated location"
       assert vendor.approved == "09/16/2017 12:00:00 AM"
       assert vendor.location_id == 43
-      assert vendor.cnn == 44433333
+      assert vendor.cnn == 44_433_333
       assert vendor.location_desc == "some updated location_desc"
       assert vendor.block_lot == "43"
       assert vendor.lot == "43"
