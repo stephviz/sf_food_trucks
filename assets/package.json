@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "google-maps-react-markers": "^2.0.8",
+    "lucide-react": "^0.367.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

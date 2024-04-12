@@ -3,3 +3,62 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+@layer base {
+  html {
+    @apply text-slate-700
+  }
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+.header {
+  font-weight: bold;
+  color: #50C878;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.home-header {
+  display: flex;
+  margin: 2em 0;
+}
+
+.home-header-img {
+  width: 6em;
+  margin-right: 2em;
+}
+
+.home-centerpiece {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cta {
+  width: 30%;
+}
+
+.vendor-card {
+  display: flex;
+}
+
+.vendor-info {
+  margin-right: 2em;;
+}
+
+.map {
+  @apply sm:w-[350px] sm:h-[350px] xl:w-[450px] xl:h-[450px] 2xl:w-[650px] 2xl:h-[650px] 
+}
