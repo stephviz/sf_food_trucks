@@ -24,10 +24,41 @@ h3 {
 
 .header {
   font-weight: bold;
+  color: #50C878;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.home-header {
+  display: flex;
+  margin: 2em 0;
+}
+
+.home-header-img {
+  width: 6em;
+  margin-right: 2em;
+}
+
+.home-centerpiece {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cta {
+  width: 30%;
+}
+
+.vendor-card {
+  display: flex;
+}
+
+.vendor-info {
+  margin-right: 2em;;
 }
 
 .map {
-  /* width: 400px;
-  height: 400px; */
   @apply sm:w-[350px] sm:h-[350px] xl:w-[450px] xl:h-[450px] 2xl:w-[650px] 2xl:h-[650px] 
 }

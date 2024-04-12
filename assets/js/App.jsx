@@ -48,8 +48,8 @@ export default function App() {
   return (
     <>
       <div className="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-8 xl:py-8">
-        <div className="flex jusify-center mb-8">
-          <div className="mx-auto max-w-xl lg:mx-0 w-1/12">
+        <div className="home-header">
+          <div className="home-header-img">
             <svg xmlns="http://www.w3.org/2000/svg" fill="#50C878" version="1.1" viewBox="4.86 21.41 90.45 73.9">
               <g>
               <path d="m75 62.5h-6.25c-0.86328 0-1.5625 0.69922-1.5625 1.5625s0.69922 1.5625 1.5625 1.5625h6.25c0.86328 0 1.5625-0.69922 1.5625-1.5625s-0.69922-1.5625-1.5625-1.5625z"/>
@@ -60,28 +60,32 @@ export default function App() {
               </g>
             </svg>
           </div>
-          <h1 className="text-[#50C878] header mx-4">SF Food Trucks</h1>
+          <h1 className="header mx-4">SF Food Trucks</h1>
         </div>
-        <div className="flex justify-around items-center space-between">
-          <div className="w-1/3">
-          {selectedVendor ? (
-            <div>
-              <h3>{selectedVendor.name}</h3>
-              <div className="block">{selectedVendor.address}</div>
-              <div className="block">{selectedVendor.days_hours}</div>
-              {selectedVendor.food_items &&
-                <ul className="block text-wrap mt-2">
-                <p>Items offered:</p>
-                  {selectedVendor.food_items.map(item => {
-                    return <li className="ml-2">- {item}</li>
-                  })}
-                </ul>
-              }
-            </div>
-          ) : (
-            <h2 className="header mb-8">Discover everything SF has to offer</h2>
-          )
-          }
+        <div className="home-centerpiece">
+          <div className="cta">
+            {selectedVendor ? (
+              <div className="vendor-card">
+                <div className="vendor-info">
+                  <h3>{selectedVendor.name}</h3>
+                  <div className="block">{selectedVendor.address}</div>
+                  <div className="block">{selectedVendor.days_hours}</div>
+                </div>
+                <div>
+                  {selectedVendor.food_items &&
+                    <ul className="block t-2">
+                    <p>Items offered:</p>
+                      {selectedVendor.food_items.map(item => {
+                        return <li className="ml-2">- {item}</li>
+                      })}
+                    </ul>
+                  }
+                </div>
+              </div>
+            ) : (
+              <h2 className="bold mb-8">Discover everything SF has to offer</h2>
+            )
+            }
           </div>
           <Map userLocation={userLocation} trucksToDisplay={trucksToDisplay} selectedVendor={selectedVendor} setVendor={setSelectedVendor} />
         </div>
