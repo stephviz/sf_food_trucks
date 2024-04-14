@@ -5,6 +5,7 @@ defmodule SFFoodTrucksWeb.UserAuthTest do
   alias SFFoodTrucks.Accounts
   alias SFFoodTrucksWeb.UserAuth
   import SFFoodTrucks.AccountsFixtures
+  import SFFoodTrucks.VendorsFixtures
 
   @remember_me_cookie "_sf_food_trucks_web_user_remember_me"
 
@@ -268,5 +269,31 @@ defmodule SFFoodTrucksWeb.UserAuthTest do
       refute conn.halted
       refute conn.status
     end
+  end
+
+  describe "fetch_api_user/2" do
+    setup [:create_vendors]
+
+    test "authenticates api user", %{conn: conn} do
+      user = user_fixture()
+      token = Accounts.create_user_api_token(user)
+
+      conn =
+        conn
+        |> Plug.Conn.put_req_header("authorization", "Bearer #{token}")
+        |> get("/api/vendors")
+
+      assert json_response(conn, 200)["data"]
+    end
+
+    test "denies access if user is not authenticated", %{conn: conn} do
+      conn = get(conn, "/api/vendors")
+      assert response(conn, 401) == "Access not granted"
+    end
+  end
+
+  defp create_vendors(_) do
+    vendors = multi_vendor_fixture()
+    %{vendors: vendors}
   end
 end

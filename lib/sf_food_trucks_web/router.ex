@@ -16,6 +16,7 @@ defmodule SFFoodTrucksWeb.Router do
   pipeline :api do
     plug :accepts, ["json"]
     plug :fetch_cookies
+    plug :fetch_api_user
   end
 
   scope "/api", SFFoodTrucksWeb, as: :api do

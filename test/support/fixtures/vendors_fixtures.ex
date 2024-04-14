@@ -37,4 +37,11 @@ defmodule SFFoodTrucks.VendorsFixtures do
 
     vendor
   end
+
+  @doc """
+  Generate multiple vendors.
+  """
+  def multi_vendor_fixture(attrs \\ %{}) do
+    Enum.map(1..3, fn _ -> vendor_fixture(attrs) end)
+  end
 end

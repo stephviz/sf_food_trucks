@@ -2,8 +2,10 @@ defmodule SFFoodTrucksWeb.VendorControllerTest do
   use SFFoodTrucksWeb.ConnCase
 
   import SFFoodTrucks.VendorsFixtures
+  import SFFoodTrucks.AccountsFixtures
 
   alias SFFoodTrucks.Vendors.Vendor
+  alias SFFoodTrucks.Accounts
 
   @create_attrs %{
     "name" => "One for the books food truck",
@@ -23,7 +25,15 @@ defmodule SFFoodTrucksWeb.VendorControllerTest do
   }
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    user = user_fixture()
+    token = Accounts.create_user_api_token(user)
+
+    conn =
+      conn
+      |> put_req_header("accept", "application/json")
+      |> put_req_header("authorization", "Bearer #{token}")
+
+    %{user: user, conn: conn}
   end
 
   describe "index" do
