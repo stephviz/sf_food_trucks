@@ -3,6 +3,10 @@ defmodule SFFoodTrucksWeb.VendorLiveTest do
 
   import Phoenix.LiveViewTest
   import SFFoodTrucks.VendorsFixtures
+  import SFFoodTrucks.AccountsFixtures
+
+  alias SFFoodTrucks.Accounts
+  alias SFFoodTrucksWeb.UserAuth
 
   @create_attrs %{
     block: "42",
@@ -82,6 +86,20 @@ defmodule SFFoodTrucksWeb.VendorLiveTest do
   defp create(_) do
     vendor = vendor_fixture()
     %{vendor: vendor}
+  end
+
+  setup %{conn: conn} do
+    user = user_fixture()
+    user_token = Accounts.generate_user_session_token(user)
+
+    conn =
+      conn
+      |> Map.replace!(:secret_key_base, SFFoodTrucksWeb.Endpoint.config(:secret_key_base))
+      |> init_test_session(%{})
+      |> put_session(:user_token, user_token)
+      |> UserAuth.fetch_current_user([])
+
+    %{user: user_fixture(), conn: conn}
   end
 
   describe "Index" do
