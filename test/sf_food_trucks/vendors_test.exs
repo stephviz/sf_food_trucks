@@ -100,6 +100,14 @@ defmodule SFFoodTrucks.VendorsTest do
       assert {:error, %Ecto.Changeset{}} = Vendors.create(@invalid_attrs)
     end
 
+    test "create/1 updates duplicate records" do
+      vendor = %{type: "Unknown", location_id: 123_456, name: "test vendor"}
+      vendor2 = %{type: "Truck", location_id: 123_456, name: "test vendor"}
+      assert {:ok, %{type: "Unknown"}} = Vendors.create(vendor)
+      assert {:ok, %{type: "Truck"}} = Vendors.create(vendor2)
+      assert [%{type: "Truck"}] = Vendors.list()
+    end
+
     test "update/2 with valid data updates the vendor" do
       vendor = vendor_fixture()
 

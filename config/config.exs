@@ -22,6 +22,19 @@ config :sf_food_trucks, SFFoodTrucksWeb.Endpoint,
   pubsub_server: SFFoodTrucks.PubSub,
   live_view: [signing_salt: "ETFhNTq1"]
 
+# Configures Oban
+config :sf_food_trucks, Oban,
+  engine: Oban.Engines.Basic,
+  queues: [default: 2],
+  repo: SFFoodTrucks.Repo,
+  plugins: [
+    {Oban.Plugins.Pruner, max_age: 60 * 60 * 24 * 7},
+    {Oban.Plugins.Cron,
+     crontab: [
+       {"@daily", SFFoodTrucks.Workers.FetchVendorsWorker, max_attempts: 2}
+     ]}
+  ]
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
@@ -30,6 +43,8 @@ config :sf_food_trucks, SFFoodTrucksWeb.Endpoint,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 config :sf_food_trucks, SFFoodTrucks.Mailer, adapter: Swoosh.Adapters.Local
+
+config :sf_food_trucks, :fetch_vendor_url, "https://data.sfgov.org/api/odata/v4/rqzj-sfat"
 
 # Configure esbuild (the version is required)
 config :esbuild,

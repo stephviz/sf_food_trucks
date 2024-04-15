@@ -1,11 +1,17 @@
 defmodule SFFoodTrucksWeb.VendorLive.Index do
   use SFFoodTrucksWeb, :live_view
+  require Logger
 
   alias SFFoodTrucks.Vendors
   alias SFFoodTrucks.Vendors.Vendor
+  alias SFFoodTrucks.Workers.FetchVendorsWorker
 
   @impl true
   def mount(_params, _session, socket) do
+    if connected?(socket) do
+      Phoenix.PubSub.subscribe(SFFoodTrucks.PubSub, "fetch_vendors")
+    end
+
     {:ok, stream(socket, :vendors, Vendors.list())}
   end
 
@@ -38,10 +44,44 @@ defmodule SFFoodTrucksWeb.VendorLive.Index do
   end
 
   @impl true
+  def handle_info({:fetch_vendors_success, result}, socket) do
+    %{
+      records_processed: records_processed,
+      records_created: records_created
+    } = result
+
+    socket =
+      put_flash(
+        socket,
+        :info,
+        "#{records_processed} vendors processed, #{records_created} new records created"
+      )
+
+    {:noreply, stream(socket, :vendors, Vendors.list())}
+  end
+
+  @impl true
+  def handle_info({:fetch_vendors_error, job}, socket) do
+    Logger.error("Fetch vendor worker failure `#{inspect(job)}`")
+
+    socket = put_flash(socket, :error, "Unable to fetch vendors")
+    {:noreply, socket}
+  end
+
+  @impl true
   def handle_event("delete", %{"id" => id}, socket) do
     vendor = Vendors.get!(id)
     {:ok, _} = Vendors.delete(vendor)
 
     {:noreply, stream_delete(socket, :vendors, vendor)}
+  end
+
+  @impl true
+  def handle_event("fetch", _params, socket) do
+    %{}
+    |> FetchVendorsWorker.new()
+    |> Oban.insert()
+
+    {:noreply, socket}
   end
 end

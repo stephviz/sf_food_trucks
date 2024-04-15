@@ -7,6 +7,7 @@ defmodule SFFoodTrucksWeb.VendorLiveTest do
 
   alias SFFoodTrucks.Accounts
   alias SFFoodTrucksWeb.UserAuth
+  alias SFFoodTrucks.Vendors
 
   @create_attrs %{
     block: "42",
@@ -163,6 +164,18 @@ defmodule SFFoodTrucksWeb.VendorLiveTest do
 
       assert index_live |> element("#vendors-#{vendor.id} a", "Delete") |> render_click()
       refute has_element?(index_live, "#vendors-#{vendor.id}")
+    end
+
+    test "subscribes to and renders fetched vendors", %{conn: conn} do
+      {:ok, index_live, _html} = live(conn, ~p"/vendors")
+
+      assert index_live |> element("#fetch-vendors", "Fetch Vendors") |> render_click()
+
+      assert Vendors.list() |> length > 1
+
+      html = render(index_live)
+      assert html =~ "Success"
+      assert html =~ "new records created"
     end
   end
 

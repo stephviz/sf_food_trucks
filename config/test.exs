@@ -23,6 +23,8 @@ config :sf_food_trucks, SFFoodTrucksWeb.Endpoint,
   secret_key_base: "1A/YX2vRFbTgnjAKC0NQTz4MIF364xFk1pB762rr02abNW60Z3gaQwtQbx4Frpx4",
   server: false
 
+config :sf_food_trucks, Oban, testing: :inline
+
 # In test we don't send emails.
 config :sf_food_trucks, SFFoodTrucks.Mailer, adapter: Swoosh.Adapters.Test
 
