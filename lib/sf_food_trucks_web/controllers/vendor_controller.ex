@@ -8,7 +8,7 @@ defmodule SFFoodTrucksWeb.VendorController do
 
   def index(conn, _params) do
     vendors = Vendors.list()
-    json(conn, %{data: vendors})
+    json(conn, %{api_key: Application.get_env(:sf_food_trucks, :google_api_key), data: vendors})
   end
 
   def create(conn, %{"vendor" => vendor_params}) do

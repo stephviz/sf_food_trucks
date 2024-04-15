@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import GoogleMap from 'google-maps-react-markers'
 import { MapPin } from 'lucide-react';
 
-export default function Map({trucksToDisplay, setVendor, selectedVendor}) {
+export default function Map({apiKey, trucksToDisplay, setVendor, selectedVendor}) {
   const mapRef = useRef(null)
   const [mapReady, setMapReady] = useState(false)
 
@@ -21,9 +21,9 @@ export default function Map({trucksToDisplay, setVendor, selectedVendor}) {
 
   return (
     <>
-      <div className='map cursor-pointer'>
+      {apiKey && <div className='map cursor-pointer'>
         <GoogleMap
-          apiKey="<put google api key here>"
+          apiKey={apiKey}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
           onGoogleApiLoaded={onGoogleApiLoaded}
@@ -42,7 +42,7 @@ export default function Map({trucksToDisplay, setVendor, selectedVendor}) {
             )
           })}
         </GoogleMap>
-      </div>
+      </div>}
     </>
   )
 }

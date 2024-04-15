@@ -46,6 +46,10 @@ config :sf_food_trucks, SFFoodTrucks.Mailer, adapter: Swoosh.Adapters.Local
 
 config :sf_food_trucks, :fetch_vendor_url, "https://data.sfgov.org/api/odata/v4/rqzj-sfat"
 
+config :sf_food_trucks, :google_api_key, "<put google api key here>"
+
+config :sf_food_trucks, :api_token, "<put api token here>"
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",

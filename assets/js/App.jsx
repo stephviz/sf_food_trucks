@@ -2,20 +2,24 @@ import React, { useState, useEffect, useRef } from "react";
 import Map from '../components/Map';
 
 export default function App() {
+  const [apiKey, setApiKey] = useState("")
   const [userLocation, setUserLocation] = useState({latitude: null, longitude: null})
   const [trucksToDisplay, setTrucksToDisplay] = useState([])
   const [selectedVendor, setSelectedVendor] = useState(null)
 
   async function getVendors(zip = null) {
+    let apiToken = document.getElementById('react-app').dataset.apiToken
+
     const path = zip ? `location/${zip}` : ""
     try {
       const response = await fetch("http://localhost:4000/api/vendors" + path, {
         headers: {
           Origin: "http://localhost:4000",
-          Authorization: "Bearer <put api token here>"
+          Authorization: `Bearer ${apiToken}`
         },
       })
       const jsonResponse = await response.json();
+      setApiKey(jsonResponse.api_key)
       getRandomTrucks(jsonResponse.data)
     } catch (error) {
       console.log(error)
@@ -88,7 +92,13 @@ export default function App() {
             )
             }
           </div>
-          <Map userLocation={userLocation} trucksToDisplay={trucksToDisplay} selectedVendor={selectedVendor} setVendor={setSelectedVendor} />
+          <Map
+            apiKey={apiKey}
+            userLocation={userLocation}
+            trucksToDisplay={trucksToDisplay}
+            selectedVendor={selectedVendor}
+            setVendor={setSelectedVendor}
+          />
         </div>
       </div>
     </>
