@@ -72,7 +72,11 @@ defmodule SFFoodTrucks.Vendors do
   def create(attrs \\ %{}) do
     %Vendor{}
     |> Vendor.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.insert(
+      on_conflict: :replace_all,
+      conflict_target: :location_id,
+      returning: true
+    )
   end
 
   @doc """

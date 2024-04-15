@@ -10,7 +10,8 @@ defmodule SFFoodTrucksWeb.VendorControllerTest do
   @create_attrs %{
     "name" => "One for the books food truck",
     "address" => "10 the Embarcadero",
-    "type" => "Truck"
+    "type" => "Truck",
+    "location_id" => 1_234_567
   }
 
   @update_attrs %{

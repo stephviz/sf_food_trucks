@@ -19,6 +19,7 @@ defmodule SFFoodTrucks.DataCase do
   using do
     quote do
       alias SFFoodTrucks.Repo
+      use Oban.Testing, repo: SFFoodTrucks.Repo
 
       import Ecto
       import Ecto.Changeset

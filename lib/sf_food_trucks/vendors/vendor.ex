@@ -87,8 +87,49 @@ defmodule SFFoodTrucks.Vendors.Vendor do
       :location,
       :zip
     ])
-    |> validate_required(:name)
-    |> validate_required(:type)
+    |> validate_required([:location_id, :name, :type])
     |> validate_inclusion(:type, ["Truck", "Push Cart", "Unknown"])
+    |> unique_constraint(:location_id)
+  end
+
+  def cast(vendor, :fetch) do
+    %{
+      location_id: vendor["objectid"],
+      name: vendor["applicant"],
+      type: get_type(vendor["facilitytype"]),
+      cnn: vendor["cnn"],
+      location_desc: vendor["locationdescription"],
+      address: vendor["address"],
+      block_lot: vendor["blocklot"],
+      block: vendor["block"],
+      lot: vendor["lot"],
+      permit: vendor["permit"],
+      status: vendor["status"],
+      food_items: get_food_items(vendor["fooditems"]),
+      x_coordinate: vendor["x"],
+      y_coordinate: vendor["y"],
+      latitude: vendor["latitude"],
+      longitude: vendor["longitude"],
+      schedule: vendor["schedule"],
+      days_hours: vendor["dayshours"],
+      approved: vendor["approved"],
+      received: vendor["received"],
+      expiration_date: vendor["expirationdate"],
+      location: "(#{vendor["latitude"]}, #{vendor["longitude"]})",
+      zip: vendor["location_zip"]
+    }
+  end
+
+  defp get_type(facility_type) when facility_type in ["Truck", "Push Cart", "Unknown"],
+    do: facility_type
+
+  defp get_type(_facility_type), do: "Unknown"
+
+  defp get_food_items(nil), do: []
+
+  defp get_food_items(food_items) do
+    food_items
+    |> String.split(":", trim: true)
+    |> Enum.map(&String.trim/1)
   end
 end

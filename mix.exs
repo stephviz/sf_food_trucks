@@ -60,7 +60,9 @@ defmodule SFFoodTrucks.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
       {:nimble_csv, "~> 1.1"},
-      {:corsica, "~> 2.0"}
+      {:corsica, "~> 2.0"},
+      {:oban, "~> 2.17"},
+      {:req, "~> 0.4.0"}
     ]
   end
 
