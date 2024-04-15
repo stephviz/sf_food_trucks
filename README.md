@@ -10,7 +10,7 @@ This project is based on the [Peck Assessment](https://github.com/peck/engineeri
   * User credential and an API token will pop up at the end of install
   * Put it in `config.exs` where it says `<put api token here>`
   * You will need a Google API key. Follow the steps for generating a key on the [google console](https://developers.google.com/maps/documentation/javascript/get-api-key)
-  * Once obtained, put you Google API key in `config.exs` where it says `<put google api key here>`
+    * Once obtained, put your Google API key in `config.exs` where it says `<put google api key here>`
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
