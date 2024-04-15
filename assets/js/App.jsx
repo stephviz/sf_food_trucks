@@ -11,7 +11,8 @@ export default function App() {
     try {
       const response = await fetch("http://localhost:4000/api/vendors" + path, {
         headers: {
-          "Origin": "http://localhost:4000"
+          Origin: "http://localhost:4000",
+          Authorization: "Bearer <put api token here>"
         },
       })
       const jsonResponse = await response.json();

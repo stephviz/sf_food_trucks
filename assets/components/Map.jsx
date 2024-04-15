@@ -23,7 +23,7 @@ export default function Map({trucksToDisplay, setVendor, selectedVendor}) {
     <>
       <div className='map cursor-pointer'>
         <GoogleMap
-          apiKey="AIzaSyDKWNtKU_VDx79_5HwpHu6J4fEhz_b0W6k"
+          apiKey="<put google api key here>"
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
           onGoogleApiLoaded={onGoogleApiLoaded}
