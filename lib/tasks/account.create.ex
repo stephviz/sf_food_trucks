@@ -48,8 +48,8 @@ defmodule Mix.Tasks.Account.Create do
 
       Test User created!
 
-      Use these credentials to login: #{user.email}, #{attrs.password}.
-      Use this authorization token to test the API routes: #{token}.
+      Use these credentials to login: #{user.email}, #{attrs.password}
+      Use this authorization token to test the API routes: #{token}
 
       """)
     else
@@ -68,7 +68,7 @@ defmodule Mix.Tasks.Account.Create do
       |> Enum.chunk_every(2)
       |> Enum.reduce(%{}, fn params, acc ->
         [k, v] = params
-        key = k |> String.replace("--", "")|> String.to_atom()
+        key = k |> String.replace("--", "") |> String.to_atom()
         Map.put(acc, key, v)
       end)
 
